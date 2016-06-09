@@ -52,7 +52,7 @@
     <br>
     <br>
     <br>
-    <div style ="top: 40px">
+    <div style ="top: 70px">
     <div class="main">
 
         
@@ -78,7 +78,7 @@
  * @author  : liangrunhong
  * @update  : 2016-05-23 6:34:54 pm
  */
-!function(){var main={checkLogin:function(){$.ajax({url:"http://hotroom.live.bigo.sg/webhomepage?uid=100000&alpha=1&countryCode=Vietnam",type:"get",dataType:"jsonp",jsonpCallback:"homepagecallback",success:function(data){var url = "http://live.bigo.tv/"; for(var html='<ul class="hot-list1">',i=0;i<30;i++)html+='<li><a target="_blank" href="http://live.bigo.tv/'+data.roominfo_vec[i].sid+'"><span alt="" class="poster" style="background-image:url('+data.roominfo_vec[i].data2.bigUrl+')"></span><div class="live-info"><img alt="" src="'+data.roominfo_vec[i].data1+'"><span class="live-name">'+data.roominfo_vec[i].nick_name+'</span><span class="live-view"><i class="icon-num"></i>'+data.roominfo_vec[i].user_count+"</span></div> </a> ",html+="</li>";html+="</ul>",$(".hot-wrap").html(html)},error:function(){}})},hotHeight:function(){var windowHeight=$(window).height(),hotHeight=windowHeight-415;$(".hot-wrap").css("height",hotHeight)},init:function(){this.checkLogin(),this.hotHeight()}};"undefined"==typeof window.main&&(window.main=main),main.init()}();
+!function(){var main={checkLogin:function(){$.ajax({url:"http://hotroom.live.bigo.sg/webhomepage?uid=100000&alpha=1&countryCode=Vietnam",type:"get",dataType:"jsonp",jsonpCallback:"homepagecallback",success:function(data){var url = "http://live.bigo.tv/"; for(var html='<ul class="hot-list1">',i=0;i<30;i++)html+='<li><a target="_blank" href="http://live.bigo.tv/'+data.roominfo_vec[i].sid+'"><span alt="" class="poster" style="background-image:url('+data.roominfo_vec[i].data2.bigUrl+')"></span><div class="live-info"><img alt="" src="'+data.roominfo_vec[i].data1+'"><span class="live-name">'+data.roominfo_vec[i].nick_name+'</span><span class="live-view"><i class="icon-num"></i>'+data.roominfo_vec[i].user_count+"</span></div> </a> ",html+="</li>";html+="</ul>",$(".hot-wrap").html(html)},error:function(){}})},hotHeight:function(){var windowHeight=$(window).height(),hotHeight=windowHeight-415;$(".hot-wrap").css("height",0)},init:function(){this.checkLogin(),this.hotHeight()}};"undefined"==typeof window.main&&(window.main=main),main.init()}();
 
 </script>
     <script src="http://mobile.bigo.tv/assets/live/v1.1/js/end.js"></script>
