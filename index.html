@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="BIGO LIVE ，broadcast , live ,fashion">
+    <meta name="keywords" content="BIGO LIVE ，broadcast , live ,fashion">
+    <meta name="format-detection" content="telephone=no,address=no,email=no">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="apple-itunes-app" content="app-id=" />
+    <link rel="apple-touar-icon" sizes="114x114" href="" />
+    <title>BIGO LIVE</title>
+    <!-- 自定义样式 start -->
+    <link href="http://mobile.bigo.tv/assets/live/v1.1/css/pc.css" rel="stylesheet">
+    <style>
+        .hot-list1{max-height:245px}.hot-list1 li{position:relative;display:inline-block;float:right;height:240px;width:49.3%}.hot-list1 .poster{display:block;width:100%;height:240px;overflow:hidden;margin:0 auto;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover}
+    </style>
+    <!-- 自定义样式 end -->
+</head>
+
+<body>
+    <div class="main">
+
+        
+            
+                <div class="hot-hd">
+                    <h3>Hot Live</h3>
+                </div>
+                <div class="hot-wrap">
+                    <ul class="hot-list1">
+                    </ul>
+                </div>
+            
+     
+
+
+    </div>
+    <script src="http://mobile.bigo.tv/assets/live/v1.1/js/jquery-1.10.2.min.js"></script>
+    <script>
+    /*!
+ * @project : 1460363596016
+ * @version : 1.0.0
+ * @author  : liangrunhong
+ * @update  : 2016-05-23 6:34:54 pm
+ */
+!function(){var main={checkLogin:function(){$.ajax({url:"http://hotroom.live.bigo.sg/webhomepage?uid=100000&alpha=1&countryCode=",type:"get",dataType:"jsonp",jsonpCallback:"homepagecallback",success:function(data){var url = "http://live.bigo.tv/"; for(var html='<ul class="hot-list1">',i=0;i<30;i++)html+='<li><a target="_blank" href="http://live.bigo.tv/'+data.roominfo_vec[i].sid+'"><span alt="" class="poster" style="background-image:url('+data.roominfo_vec[i].data2.bigUrl+')"></span><div class="live-info"><img alt="" src="'+data.roominfo_vec[i].data1+'"><span class="live-name">'+data.roominfo_vec[i].nick_name+'</span><span class="live-view"><i class="icon-num"></i>'+data.roominfo_vec[i].user_count+"</span></div> </a> ",html+="</li>";html+="</ul>",$(".hot-wrap").html(html)},error:function(){}})},hotHeight:function(){var windowHeight=$(window).height(),hotHeight=windowHeight-415;$(".hot-wrap").css("height",hotHeight)},init:function(){this.checkLogin(),this.hotHeight()}};"undefined"==typeof window.main&&(window.main=main),main.init()}();
+
+</script>
+    <script src="http://mobile.bigo.tv/assets/live/v1.1/js/end.js"></script>
+    <script src="http://mobile.bigo.tv/assets/live/v1.1/js/jquery.bxslider.js"></script>
+    <script>
+        (function(){
+            $(".tips-group").hover(function(){
+                $(".tips-download").fadeIn("fast");
+            },function(){
+                $(".tips-download").fadeOut("fast");
+            });
+
+            var slideWidth =$('.live-container').width();
+            $('.bx-viewport').width(slideWidth);
+
+        })()
+    </script>
+</body>
+
+</html>
