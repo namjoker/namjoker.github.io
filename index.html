@@ -67,8 +67,9 @@
         
             
                 <div class="hot-hd">
-                    <h3 style = "color:white">Hot Live - Top 30 </h3><div class="fb-like" data-href="http://livefb.me" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+                    <h3 style = "color:white">Hot Live - Top 30 </h3>
                 </div>
+                <div class="fb-like" data-href="http://www.livefb.me/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
                 <div class="hot-wrap">
                     <ul class="hot-list1">
                     </ul>
@@ -92,19 +93,14 @@
 </script>
     <script src="http://mobile.bigo.tv/assets/live/v1.1/js/end.js"></script>
     <script src="http://mobile.bigo.tv/assets/live/v1.1/js/jquery.bxslider.js"></script>
-    <script>
-        (function(){
-            $(".tips-group").hover(function(){
-                $(".tips-download").fadeIn("fast");
-            },function(){
-                $(".tips-download").fadeOut("fast");
-            });
-
-            var slideWidth =$('.live-container').width();
-            $('.bx-viewport').width(slideWidth);
-
-        })()
-    </script>
+    <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.6";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 </body>
      <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -116,12 +112,5 @@
   ga('send', 'pageview');
 
 </script>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=251173608570125";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-<script>
+
 </html>
