@@ -1,0 +1,286 @@
+body {
+    background-color: #121212;
+    color: #ffffff;
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-position: unset;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+}
+
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-header {
+    background-color: rgba(255, 255, 255, 0.486);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.popup h2 {
+    margin-bottom: 20px;
+}
+
+.popup-content {
+    background: #333;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 50%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2vh; /* Add margin to create space between heading and popup-content */
+}
+
+/* Điều chỉnh khi màn hình có kích thước nhỏ (điện thoại) */
+@media (max-width: 768px) {
+    .popup-content {
+        width: 80%;
+        /* Tăng chiều rộng popup-content khi màn hình nhỏ */
+        max-width: none;
+        /* Tắt giới hạn chiều rộng tối đa */
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+.floating-button {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+}
+
+@keyframes smooth-appear {
+    to {
+        bottom: 20px;
+        opacity: 1;
+    }
+}
+
+.container {
+    background: rgba(0, 0, 0, 0.13);
+    width: 100%;
+    max-width: 100%;
+    color: white;
+    padding: 20px;
+    position: initial;
+    bottom: -100%;
+    opacity: 0;
+    left: 50%;
+    /* transform: translateX(-50%); */
+    border-radius: 10px;
+    animation: smooth-appear 0.1s ease forwards;
+    margin-top: 20px;
+    /* Add margin to create space between greeting and container */
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 90%;
+        padding: 10;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 85vh;
+}
+
+.row img {
+    width: 90%;
+    margin-bottom: 10px;
+    opacity: 0;
+    transition: opacity 1s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.row img.visible {
+    opacity: 1;
+}
+
+.row img.selected {
+    border: 5px solid #00ff00;
+}
+
+.row img.selected::after {
+    content: '✔';
+    color: #00ff00;
+    font-size: 2em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.row img.dimmed {
+    opacity: 0.5;
+}
+
+@media (min-width: 768px) {
+    .row img {
+        width: 48%;
+        margin: 1%;
+    }
+}
+
+@media (min-width: 992px) {
+    .row img {
+        width: 30%;
+        margin: 1%;
+    }
+}
+
+#greeting {
+    position: relative;
+    z-index: 10;
+}
+
+#maleImages,
+#femaleImages {
+    z-index: 1;
+}
+
+#confirmationPopup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: grid;
+    place-items: center;
+    z-index: 1000;
+    display: none;
+}
+
+#confirmationPopup .popup-content {
+    background: #333;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 90%;
+    /* Changed from 100% to prevent edge-to-edge */
+    max-width: 800px;
+    /* Increased from 500px */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#confirmationPopup .popup-content img {
+    width: 280px;
+    height: 200px;
+    margin: 10px;
+}
+
+#successMessage {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    cursor: pointer;
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 50%;
+    /* Changed from max-width: 90% */
+    height: auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.modal-content:hover {
+    transform: translateY(-50%) scale(1.05);
+    /* Add zoom effect on hover */
+}
+
+/* Add animation for modal opening */
+@keyframes zoomIn {
+    from {
+        transform: translateY(-50%) scale(0.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(-50%) scale(1);
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    animation: zoomIn 0.3s ease-out;
+}
+
+.vote-button {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2001;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.vote-button:hover {
+    background-color: #218838;
+}
+
