@@ -91,9 +91,13 @@ $(document).ready(function () {
         var queenID = $('#femaleImages .row img.selected').data('code');
         var apiUrl = `https://script.google.com/macros/s/AKfycbzDqCxpVJ-11jv5tg2QVj_wsO2ulUwRARoVpgnrcab1ue3-sAopUa2gUmDA8YEGYclP/exec?action=poll&voterID=${voterID}&kingID=${kingID}&queenID=${queenID}`;
 
+        $('#loadingCircle').removeClass('hidden'); // Show loading circle
+        $('#confirmButton').addClass('hidden'); // Hide confirmButton
+
         $.getJSON(apiUrl, function (response) {
+            $('#loadingCircle').addClass('hidden'); // Hide loading circle
             if (response.code === 1) {
-                $('#confirmationPopup .popup-content').html('<h2>Bạn đã bầu chọn thành công!</h2><p>Quay lại trang bắt đầu sau <span id="countdown">3</span> giây...</p>');
+                $('#confirmationPopup .popup-content').html('<h2>✅Bạn đã bầu chọn thành công!</h2><p>Quay lại trang bắt đầu sau <span id="countdown">3</span> giây...</p>');
                 var countdown = 3;
                 var countdownInterval = setInterval(function () {
                     countdown--;
