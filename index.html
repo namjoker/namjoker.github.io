@@ -1,124 +1,88 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
-    <meta name="description" content="BIGO LIVE ，broadcast , live ,fashion">
-    <meta name="keywords" content="BIGO LIVE ，broadcast , live ,fashion">
-    <meta name="format-detection" content="telephone=no,address=no,email=no">
-    <meta http-equiv="Cache-Control" content="no-transform">
-    <meta http-equiv="Cache-Control" content="no-siteapp">
-    <meta name="apple-itunes-app" content="app-id=" />
-    <link rel="apple-touar-icon" sizes="114x114" href="" />
-    <title>BIGO LIVE HOT</title>
-    <!-- 自定义样式 start -->
-    <link href="http://mobile.bigo.tv/assets/live/v1.1/css/pc.css" rel="stylesheet">
-    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .hot-list1{max-height:245px}.hot-list1 li{position:relative;display:inline-block;float:right;height:240px;width:49.3%}.hot-list1 .poster{display:block;width:100%;height:240px;overflow:hidden;margin:0 auto;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover}
-    </style>
-    <!-- 自定义样式 end -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>King Queen Voting</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="wrapper">
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand text-uppercase" href="http://livefb.me/">LiveFB<span><img src="https://cdn4.iconfinder.com/data/icons/remains/100/facebook_live_icon-2-128.png" alt="live stream FB PC" height="25px" width= "25px"></span></a>
-          
+    <!-- Add modal HTML after body -->
+    <div id="imageModal" class="modal">
+        <img class="modal-content" id="enlargedImage">
+        <button id="voteButton" class="vote-button">Bình chọn</button>
+    </div>
+    <div id="popup" class="popup">
+        <div class="popup-header">
+            <img src="logo.png" alt="Company Logo" class="mb-4" style="max-width: 300px; margin-bottom: 20px;">
+            <h1 class="text-center mb-4" style="color: #EBE1B7;">Bình chọn King và Queen</h1>
+            <div class="popup-content w-100">
+                <h4>Nhập mã của bạn</h4>
+                <input type="text" id="codeInput" maxlength="3" class="form-control" placeholder="Nhập mã may mắn trên vé">
+                <button id="startButton" class="btn btn-primary mt-3 w-100">Bắt đầu</button>
+            </div>
         </div>
-    
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="navigation">
-            <ul class="nav navbar-nav navbar-right">
-               <!--<li><a class="btn-success btn-circle" href="https://www.youtube.com/watch?v=vIkyj4K7kBU" target="_blank"><span style="color:white;">Hướng dẫn sử dụng</span></a></li>-->
-                
-<!--                <li style = "">-->
-<!--                    <form class="form-inline">-->
-<!--                    <div class="form-group">-->
-<!--                    <input type="text" class="form-control" id="exampleInputName2" placeholder="Nhập id bigo">-->
-<!--                     </div>-->
-<!--  <button type="submit" class="btn btn-primary">Xem</button>-->
-<!--</form>-->
-<!--                </li>-->
-                <li><a class="btn-success btn-circle" href="facebook.html"><span style="color:white;">Live Facebook</span></a></li>
-            </ul>
+    </div>
+
+    <div id="greeting" class="text-center hidden">
+        <h1 id="greetingMessage">Xin chào <span id="codeDisplay"></span></h1>
+    </div>
+
+    <div id="maleImages" class="container hidden">
+        <div class="row">
+            <!-- ...existing code for 5 male images... -->
+            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhedd1akakkwvVCp9Q8tm0qbBoQjf6tgKrriy_ZvI21-CDZ_tNZbR0hcbUxZ6n4qxpbz7tcjMWWHznAMD8mrazFihMkaGcYJYkBzD4fFKnH2Z-P3oMkfON5Sq3eXPT89JN8uumWC0WbQ1pByXwCINdXhFJ2GyBcC8yYPTpaCTFNpB8hPunafZpkGxwj01c" alt="" data-code="R59">
+            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEitIgiyxmz9k5-3mwAVhOUy2Nwx_wVoDm0QTjJfNEY0EDQuqcdk4K_G5YMl9PUOIeUV-HTnlTPnS4A4imxwMBSvl90DL9saIhyVXif95Z5Rt7S4reeK5x8c0LH9_m6PrtLFVzoaK6GL27hV8Sgy9Lk0g7zX8PLs15lBZtQ7Ur6O4dWoGLPlUwhsWe09b3Q" alt="" data-code="M51">
+            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhedd1akakkwvVCp9Q8tm0qbBoQjf6tgKrriy_ZvI21-CDZ_tNZbR0hcbUxZ6n4qxpbz7tcjMWWHznAMD8mrazFihMkaGcYJYkBzD4fFKnH2Z-P3oMkfON5Sq3eXPT89JN8uumWC0WbQ1pByXwCINdXhFJ2GyBcC8yYPTpaCTFNpB8hPunafZpkGxwj01c" alt="" data-code="C20">
+            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEitIgiyxmz9k5-3mwAVhOUy2Nwx_wVoDm0QTjJfNEY0EDQuqcdk4K_G5YMl9PUOIeUV-HTnlTPnS4A4imxwMBSvl90DL9saIhyVXif95Z5Rt7S4reeK5x8c0LH9_m6PrtLFVzoaK6GL27hV8Sgy9Lk0g7zX8PLs15lBZtQ7Ur6O4dWoGLPlUwhsWe09b3Q" alt="" data-code="Y38">
+            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhedd1akakkwvVCp9Q8tm0qbBoQjf6tgKrriy_ZvI21-CDZ_tNZbR0hcbUxZ6n4qxpbz7tcjMWWHznAMD8mrazFihMkaGcYJYkBzD4fFKnH2Z-P3oMkfON5Sq3eXPT89JN8uumWC0WbQ1pByXwCINdXhFJ2GyBcC8yYPTpaCTFNpB8hPunafZpkGxwj01c" alt="" data-code="E02">
         </div>
-      </div>
-    </nav>
     </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <div style ="top: 70px">
-    <div class="main">
 
-        
-            
-                <div class="hot-hd">
-                   
-                    <h3 style = "color:white">Hot Live - Top 30</h3>
-                </div>
-                <div class ="hot-hd">
-                    <h3> <div class="fb-like" data-href="http://www.livefb.me/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div></h3>
-                    
-                </div>
-                <div class="hot-wrap">
-                    <ul class="hot-list1">
-                    </ul>
-                </div>
-            
-     
-
-
+    <div id="femaleImages" class="container hidden">
+        <div class="row">
+            <!-- ...existing code for 5 female images... -->
+            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhj05P11KwiFvCfAMFRTADoZTQoP214QytgFQ1EWbqcD_LUZk36k1yBsoejTzrHTV4EdRcNMU_CwajEL1ngug9z7DGiXOoXSTqksTIX4YgD3Vl4u-DeupsrDsZ_gjCP7YGc4Y8Gpyr9m433IEuxQHze9ce5ptipk2Q0TLPZtYClvlBNep7CF5HNnZva3Nc" alt="" data-code="D11">
+            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEh-elhQBq8o1-wSXl1FChN997R0Ger6QNZuaAELdfT59bDnR4jF6HF5Z9qswnyq-VMMBI15CkEt4DRUxtibosLS-wOjwHhyVodhZrYM_BnObx7ZWwBDQnB8auvFCe3abGoeXogPSnWwJH7p1e5l026d262qUNw86QAkY0YjMpjmiT6GBCUGTUJ0HszfAS4" alt="" data-code="J47">
+            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhj05P11KwiFvCfAMFRTADoZTQoP214QytgFQ1EWbqcD_LUZk36k1yBsoejTzrHTV4EdRcNMU_CwajEL1ngug9z7DGiXOoXSTqksTIX4YgD3Vl4u-DeupsrDsZ_gjCP7YGc4Y8Gpyr9m433IEuxQHze9ce5ptipk2Q0TLPZtYClvlBNep7CF5HNnZva3Nc" alt="" data-code="V77">
+            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEh-elhQBq8o1-wSXl1FChN997R0Ger6QNZuaAELdfT59bDnR4jF6HF5Z9qswnyq-VMMBI15CkEt4DRUxtibosLS-wOjwHhyVodhZrYM_BnObx7ZWwBDQnB8auvFCe3abGoeXogPSnWwJH7p1e5l026d262qUNw86QAkY0YjMpjmiT6GBCUGTUJ0HszfAS4" alt="" data-code="O66">
+            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhj05P11KwiFvCfAMFRTADoZTQoP214QytgFQ1EWbqcD_LUZk36k1yBsoejTzrHTV4EdRcNMU_CwajEL1ngug9z7DGiXOoXSTqksTIX4YgD3Vl4u-DeupsrDsZ_gjCP7YGc4Y8Gpyr9m433IEuxQHze9ce5ptipk2Q0TLPZtYClvlBNep7CF5HNnZva3Nc" alt="" data-code="G58">
+        </div>
     </div>
+
+    <div id="confirmationPopup">
+        <div class="popup-content">
+            <h2>Xác nhận bầu chọn</h2>
+            <div id="selectedImages"></div>
+            <button id="confirmButton" class="btn btn-primary mt-3 w-100">Xác nhận</button>
+        </div>
     </div>
-    <script src="http://mobile.bigo.tv/assets/live/v1.1/js/jquery-1.10.2.min.js"></script>
+
+    <div id="successMessage">
+        <h2>Bạn đã bầu chọn thành công!</h2>
+        <p>Quay lại trang bắt đầu sau <span id="countdown">3</span> giây...</p>
+    </div>
+
+    <button id="nextButton" class="btn btn-success floating-button w-100 hidden ">Tiếp theo</button>
+    <button id="finishButton" class="btn btn-danger floating-button w-100 hidden">Hoàn tất</button>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
     <script>
-    /*!
- * @project : 1460363596016
- * @version : 1.0.0
- * @author  : liangrunhong
- * @update  : 2016-05-23 6:34:54 pm
- */
-!function(){var main={checkLogin:function(){$.ajax({url:"http://hotroom.live.bigo.sg/webhomepage?uid=100000&alpha=1&countryCode=Vietnam",type:"get",dataType:"jsonp",jsonpCallback:"homepagecallback",success:function(data){var url = "http://live.bigo.tv/"; for(var html='<ul class="hot-list1">',i=0;i<30;i++)html+='<li><a target="_blank" href="http://live.bigo.tv/'+data.roominfo_vec[i].sid+'"><span alt="" class="poster" style="background-image:url('+data.roominfo_vec[i].data2.bigUrl+')"></span><div class="live-info"><img alt="" src="'+data.roominfo_vec[i].data1+'"><span class="live-name">'+data.roominfo_vec[i].nick_name+'</span><span class="live-view"><i class="icon-num"></i>'+data.roominfo_vec[i].user_count+"</span></div> </a> ",html+="</li>";html+="</ul>",$(".hot-wrap").html(html)},error:function(){}})},hotHeight:function(){var windowHeight=$(window).height(),hotHeight=windowHeight-415;$(".hot-wrap").css("height",0)},init:function(){this.checkLogin(),this.hotHeight()}};"undefined"==typeof window.main&&(window.main=main),main.init()}();
+        $(document).ready(function () {
+            $('#nextButton').click(function () {
+                $('#greetingMessage').text('👑 Hãy bình chọn cho Queen');
+            });
 
-</script>
-    <script src="http://mobile.bigo.tv/assets/live/v1.1/js/end.js"></script>
-    <script src="http://mobile.bigo.tv/assets/live/v1.1/js/jquery.bxslider.js"></script>
-    <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.6";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-  <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-77118296-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
+            $('#startButton').click(function () {
+                $('#greetingMessage').text('👑 Hãy bình chọn cho King');
+            });
+        });
+    </script>
 </body>
-   <!--<footer style="background-color: white;width: 300px;">-->
-   <!--    <h3>Bình luận</h3>-->
-   <!--    <div class="fb-comments" data-href="http://www.livefb.me/" data-width="300" data-numposts="10" data-order-by="reverse_time"></div>-->
-   <!--</footer>-->
 
 </html>
