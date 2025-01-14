@@ -122,24 +122,28 @@ body {
     height: 85vh;
 }
 
-.row img {
+.image-container {
+    position: relative;
     width: 90%;
     margin-bottom: 10px;
+}
+
+.image-container img {
+    width: 100%;
     opacity: 0;
     transition: opacity 1s ease;
     cursor: pointer;
-    position: relative;
 }
 
-.row img.visible {
+.image-container img.visible {
     opacity: 1;
 }
 
-.row img.selected {
+.image-container img.selected {
     border: 5px solid #00ff00;
 }
 
-.row img.selected::after {
+.image-container img.selected::after {
     content: '✔';
     color: #00ff00;
     font-size: 2em;
@@ -152,19 +156,30 @@ body {
     padding: 10px;
 }
 
-.row img.dimmed {
+.image-container img.dimmed {
     opacity: 0.5;
 }
 
+.overlay {
+    position: absolute;
+    bottom: 0;
+    right: 10;
+    background: rgb(34 99 155);
+    color: white;
+    padding: 5px;
+    font-size: 1.4em;
+    border-top-left-radius: 5px;
+}
+
 @media (min-width: 768px) {
-    .row img {
+    .image-container {
         width: 48%;
         margin: 1%;
     }
 }
 
 @media (min-width: 992px) {
-    .row img {
+    .image-container {
         width: 30%;
         margin: 1%;
     }
