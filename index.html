@@ -32,10 +32,11 @@
                 alt="Company Logo" class="mb-4" style="max-width: 300px; margin-bottom: 20px;">
             <h1 class="text-center mb-4" style="color: #EBE1B7;">Bình chọn King và Queen</h1>
             <div class="popup-content w-100">
-                <h4>Nhập mã của bạn</h4>
-                <input type="text" id="codeInput" maxlength="3" class="form-control"
+                <h1 id="countdownTimer" class="text-center mb-4"></h1>
+                <h4 id="enterCodeLabel" class="hidden">Nhập mã của bạn</h4>
+                <input type="text" id="codeInput" maxlength="3" class="form-control hidden"
                     placeholder="Nhập mã may mắn trên vé">
-                <button id="startButton" class="btn btn-primary mt-3 w-100">Bắt đầu</button>
+                <button id="startButton" class="btn btn-primary mt-3 w-100 hidden">Bắt đầu</button>
             </div>
         </div>
     </div>
@@ -128,6 +129,26 @@
     <script src="script.js"></script>
     <script>
         $(document).ready(function () {
+            // Countdown timer
+            var countdownDate = new Date("Jan 19, 2025 16:00:00").getTime();
+            var countdownTimer = setInterval(function () {
+                var now = new Date().getTime();
+                var distance = countdownDate - now;
+
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                $('#countdownTimer').html(days + " ngày " + hours + "h " + minutes + "m " + seconds + "s ");
+
+                if (distance < 0) {
+                    clearInterval(countdownTimer);
+                    $('#countdownTimer').html("Bắt đầu bình chọn!");
+                    $('#enterCodeLabel, #codeInput, #startButton').removeClass('hidden');
+                }
+            }, 1000);
+
             $('#nextButton').click(function () {
                 $('#greetingMessage').text('👑 Hãy bình chọn cho Queen');
             });
